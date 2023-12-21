@@ -1,5 +1,5 @@
 {
-  "name": "pearl-of-wisdom",
+  "name": "nuggets-of-wisdom",
   "version": "1.0.0",
   "description": "Experimental Bot that does mostly useless things",
   "main": "app.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UsernameOfAlexT/wise-garbage-can.git"
+    "url": "https://github.com/UsernameOfAlexT/sagely-garbage-can"
   },
   "author": "UsernameOfAlexT",
   "license": "ISC",
