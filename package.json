@@ -1,0 +1,39 @@
+{
+  "name": "pearl-of-wisdom",
+  "version": "1.0.0",
+  "description": "Experimental Bot that does mostly useless things",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node app.js",
+    "prestart": "node cmdregist.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UsernameOfAlexT/wise-garbage-can.git"
+  },
+  "author": "UsernameOfAlexT",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/opus": "^0.7.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "@discordjs/voice": "^0.6.0",
+    "@napi-rs/canvas": "^0.1.21",
+    "axios": "^0.24.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.1.0",
+    "express": "^4.18.2",
+    "ffmpeg-static": "^4.3.0",
+    "sodium": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^16.0.3",
+    "mocha": "^9.2.0"
+  },
+  "engines": {
+    "node": "^17",
+    "npm": "^8"
+  }
+}
