@@ -2,7 +2,9 @@
  * A single point of truth for deciding 
  * env related variables
  */
+// TODO move other process.env.* things into this, export as an object
 const HIGH_LOG_ALIASES = ['high', 'detailed', 'verbose'];
+// TODO why are logging levels setup this way? use ints instead
 const LOG_LEVEL = process.env.LOGGING_LEVEL || 'standard';
 const GUILD_ID = process.env.GUILD_ID || '';
 
