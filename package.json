@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha",
-    "start": "node app.js",
-    "prestart": "node cmdregist.js"
+    "start": "node init.js"
   },
   "repository": {
     "type": "git",

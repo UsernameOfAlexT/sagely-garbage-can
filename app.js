@@ -1,13 +1,12 @@
 'use strict';
 const fs = require('fs');
-const { Client, Intents, Collection, Permissions } = require('discord.js');
-const { InteractionReply } = require('./support/intereply.js');
-const envutils = require('./envutils.js');
-envutils.setupEnvVars();
-const bot_token = process.env.BOT_TOKEN;
+const {Client, Intents, Collection, Permissions} = require('discord.js');
+const {InteractionReply} = require('./support/intereply.js');
+const {BOT_TOKEN} = process.env;
 const utils = require('./utils.js');
 const phraserobj = require('./datalists/statusphraseobjs.js');
 const phraser = require('./datalists/statusphraser.js');
+const {useDetailedLogging} = require('./envutils.js');
 
 const intentsUsed = new Intents();
 intentsUsed.add(
@@ -33,7 +32,7 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-  console.log(`Logging Level: ${envutils.useDetailedLogging() ? "debug" : "standard"}`);
+  console.log(`Logging Level: ${useDetailedLogging() ? "debug" : "standard"}`);
   console.log('I am ready to fight robots');
 
   // roll a random status upon each startup. For fun.
@@ -132,4 +131,4 @@ client.on('voiceStateUpdate', (oldState, newState) => {
   client.user.setActivity(formattedact, { type: utils.pickRandomly(phraser.relevant_start_statuses) });
 });
 
-client.login(bot_token);
+client.login(BOT_TOKEN);
