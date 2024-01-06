@@ -1,5 +1,4 @@
 'use strict';
-const fs = require('fs');
 const {Client, Intents, Collection, Permissions} = require('discord.js');
 const {InteractionReply} = require('./support/intereply.js');
 const {BOT_TOKEN} = process.env;
@@ -18,25 +17,22 @@ intentsUsed.add(
 
 const client = new Client({ intents: intentsUsed });
 const cooldowns = new Collection();
-let voiceStateLastUpdate = Date.now();
-let randactivity;
+let voiceStateLastUpdate = Date.now(); // TODO move this
 const VOICE_MIN_CD = 5000; // 5 seconds min between updates
 
-client.commands = new Collection();
-// get all files in commands, then reduce to only things ending in .js
-const commandFiles = fs.readdirSync('./command').filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-  const command = require(`./command/${file}`);
-  client.commands.set(command.data.name, command);
-}
+exports.initialize = (commands) => {
+  client.commands = new Collection();
+  for (const command of commands) 
+    client.commands.set(command.data.name, command);
+  return client.login(BOT_TOKEN);
+};
 
 client.once('ready', () => {
   console.log(`Logging Level: ${useDetailedLogging() ? "debug" : "standard"}`);
   console.log('I am ready to fight robots');
 
   // roll a random status upon each startup. For fun.
-  randactivity = phraserobj.chain(phraser.standard_list, 4);
+  const randactivity = phraserobj.chain(phraser.standard_list, 4);
   client.user.setActivity(randactivity, { type: utils.pickRandomly(phraser.relevant_start_statuses) });
 });
 
@@ -131,4 +127,3 @@ client.on('voiceStateUpdate', (oldState, newState) => {
   client.user.setActivity(formattedact, { type: utils.pickRandomly(phraser.relevant_start_statuses) });
 });
 
-client.login(BOT_TOKEN);
